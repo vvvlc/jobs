@@ -15,7 +15,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.zowe.api.common.connectors.zosmf.ZosmfConnector;
+import org.zowe.api.common.connectors.ZConnector;
 import org.zowe.api.common.connectors.zosmf.exceptions.DataSetNotFoundException;
 import org.zowe.api.common.exceptions.ZoweApiRestException;
 import org.zowe.api.common.utils.ResponseCache;
@@ -39,9 +39,9 @@ public class SubmitJobFileZosmfRequestRunner extends AbstractZosmfJobsRequestRun
     }
 
     @Override
-    protected RequestBuilder prepareQuery(ZosmfConnector zosmfConnector) throws URISyntaxException {
+    protected RequestBuilder prepareQuery(ZConnector zConnector) throws URISyntaxException {
         String urlPath = String.format("restjobs/jobs"); //$NON-NLS-1$
-        URI requestUrl = zosmfConnector.getFullUrl(urlPath);
+        URI requestUrl = zConnector.getFullUrl(urlPath);
         JsonObject body = new JsonObject();
         body.addProperty("file", "//'" + fileName + "'");
 

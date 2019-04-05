@@ -25,10 +25,10 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.zowe.api.common.connectors.zosmf.ZosmfConnector;
+import org.zowe.api.common.services.AbstractZRequestRunner;
 import org.zowe.api.common.test.ZoweApiTest;
 import org.zowe.api.common.utils.JsonUtils;
 import org.zowe.api.common.utils.ResponseCache;
-import org.zowe.api.common.zosmf.services.AbstractZosmfRequestRunner;
 
 import java.io.IOException;
 import java.net.URI;
@@ -44,9 +44,8 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 
 //TODO MARK - speak to Mark about how to get this moved to common test https://github.com/zowe/explorer-api-common/issues/11
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({ RequestBuilder.class, JsonUtils.class, ContentType.class,
-        AbstractZosmfRequestRunner.class })
-public abstract class AbstractZosmfRequestRunnerTest extends ZoweApiTest {
+@PrepareForTest({ RequestBuilder.class, JsonUtils.class, ContentType.class, AbstractZRequestRunner.class })
+public abstract class AbstractZRequestRunnerTest extends ZoweApiTest {
 
     static final String BASE_URL = "https://dummy.com/zosmf/";
 

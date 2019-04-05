@@ -13,7 +13,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
-import org.zowe.api.common.connectors.zosmf.ZosmfConnector;
+import org.zowe.api.common.connectors.ZConnector;
 import org.zowe.api.common.utils.ResponseCache;
 import org.zowe.jobs.model.Job;
 
@@ -30,9 +30,9 @@ public class SubmitJobStringZosmfRequestRunner extends AbstractZosmfJobsRequestR
     }
 
     @Override
-    protected RequestBuilder prepareQuery(ZosmfConnector zosmfConnector) throws URISyntaxException, IOException {
+    protected RequestBuilder prepareQuery(ZConnector zConnector) throws URISyntaxException, IOException {
         String urlPath = String.format("restjobs/jobs"); // $NON-NLS-1
-        URI requestUrl = zosmfConnector.getFullUrl(urlPath);
+        URI requestUrl = zConnector.getFullUrl(urlPath);
         StringEntity stringEntity = new StringEntity(jcl);
         RequestBuilder requestBuilder = RequestBuilder.put(requestUrl).setEntity(stringEntity);
         requestBuilder.addHeader("X-IBM-Intrdr-Class", "A");

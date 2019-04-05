@@ -12,7 +12,7 @@ package org.zowe.jobs.services.zosmf;
 import org.zowe.jobs.model.Job;
 import org.zowe.jobs.model.JobStatus;
 
-public abstract class AbstractZosmfJobsRequestRunnerTest extends AbstractZosmfRequestRunnerTest {
+public abstract class AbstractZosmfJobsRequestRunnerTest extends AbstractZRequestRunnerTest {
 
     static Job createJob(String id, String jobName, String owner, String type, JobStatus status, String phase,
             String returnCode) {

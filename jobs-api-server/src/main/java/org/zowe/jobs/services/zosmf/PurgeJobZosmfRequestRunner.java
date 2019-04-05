@@ -13,7 +13,7 @@ import com.google.gson.JsonObject;
 
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.RequestBuilder;
-import org.zowe.api.common.connectors.zosmf.ZosmfConnector;
+import org.zowe.api.common.connectors.ZConnector;
 import org.zowe.api.common.exceptions.ZoweApiRestException;
 import org.zowe.api.common.utils.ResponseCache;
 
@@ -37,9 +37,9 @@ public class PurgeJobZosmfRequestRunner extends AbstractZosmfJobsRequestRunner<V
     }
 
     @Override
-    protected RequestBuilder prepareQuery(ZosmfConnector zosmfConnector) throws URISyntaxException {
+    protected RequestBuilder prepareQuery(ZConnector zConnector) throws URISyntaxException {
         String urlPath = String.format("restjobs/jobs/%s/%s", jobName, jobId); //$NON-NLS-1$
-        URI requestUrl = zosmfConnector.getFullUrl(urlPath);
+        URI requestUrl = zConnector.getFullUrl(urlPath);
         return RequestBuilder.delete(requestUrl);
     }
 

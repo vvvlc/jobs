@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.RequestBuilder;
-import org.zowe.api.common.connectors.zosmf.ZosmfConnector;
+import org.zowe.api.common.connectors.ZConnector;
 import org.zowe.api.common.exceptions.ZoweApiRestException;
 import org.zowe.api.common.model.ItemsWrapper;
 import org.zowe.api.common.utils.ResponseCache;
@@ -50,7 +50,7 @@ public class GetJobsZosmfRequestRunner extends AbstractZosmfJobsRequestRunner<It
     }
 
     @Override
-    protected RequestBuilder prepareQuery(ZosmfConnector zosmfConnector) throws URISyntaxException {
+    protected RequestBuilder prepareQuery(ZConnector zConnector) throws URISyntaxException {
         if (prefix == null) {
             prefix = "*";
         }
@@ -58,7 +58,7 @@ public class GetJobsZosmfRequestRunner extends AbstractZosmfJobsRequestRunner<It
             owner = "*";
         }
         String query = String.format("owner=%s&prefix=%s", owner, prefix); //$NON-NLS-1$
-        URI requestUrl = zosmfConnector.getFullUrl("restjobs/jobs", query); //$NON-NLS-1$
+        URI requestUrl = zConnector.getFullUrl("restjobs/jobs", query); //$NON-NLS-1$
         return RequestBuilder.get(requestUrl);
     }
 
